@@ -1,0 +1,101 @@
+Project 2: grep indexer;
+Author: Vincent Bett
+
+PURPOSE:
+	To index all the files in a directory and 
+	then allow a user to search for the word.
+	
+ACKNOWLEDGEMENTS:
+	Pumkin programmer:
+		Basics of creating a hash table.
+		
+FILES PROVIDED.
+	wordstruct.cpp
+		the struct tha stores the word and its details
+	main.cpp
+		the main file that initializes all the
+		classes, accepts user input and prints out the 
+		result.
+	hasher.h
+		header file for the hasher class.
+		its purpose is to take a word, hash it and then 
+		add it into a hash table for easy retrieval
+	hasher.cpp
+		Implementation of the hasher class
+	parser.h
+		header file for the parser class
+		Its purpose is to traverse a directory and get all
+		the files to be indexed.
+	parser.cpp
+		the implementation of the parser class
+	Makefile
+		to compile the program
+        DirNode.h
+                header file for the class that stores the pointer to 
+                the directories.
+        DirNode.o
+                object file that enables the program to know the details of 
+                the directories.
+        FSTree.h
+                header file that would store the directory tree information.
+        FSTree.o 
+                Object file that enabled the program to create the tree
+                of directories.
+		
+HOW TO COMPILE:
+	to compile the program, simply type make and the 
+	included Makefile compiles it.
+	
+ARCHITECTURAL OVERVIEW
+ 	The program consists of two mai classes linked together by a main 
+ 	file.
+ 	The main file takes in the user input and then initializes the parser
+ 	by passing in the user input into the parser's constructor.
+ 	
+ 	The parser class is responsible for traversing the directories and
+ 	opening the files. It takes in a root directory and an instance of
+ 	the hashing class. It then takes the root and passes it to the the 
+ 	FSTtree class to come up with a tree of directories.
+ 	the FSTtree then returns a root pointer that is then passed into the
+ 	parser for traversal
+ 	
+ 	The parser then calls the instance of the hasher to hash and save 
+ 	the found words. The found words are in turn stored in the hash table
+ 	ready to be queried.
+ 	
+ 	A query is run from main from which main calls the hasher to check
+ 	if the word exists.
+ 
+ DATA STRUCURES USED:
+ 	A hash table:
+ 		To store the found words for easy retrieval.
+ 		words found is a struct that stores the initial word, a vector 
+ 		of file paths, the location in a file of the word and a list 
+ 		of different cased words with the same letters.
+ 	
+ 	Vectors.
+ 		Vectors were used to store lists to enable easy addition and 
+ 		retrieval.
+
+
+TESTING PROCEDURE:
+
+	I first tested the hashing class by creating a different 
+	main file that had an array of words. I then passed the words into
+	the hashing class and printed out the hash values. 
+	The next test was checking whether the hash table correctly inserted 
+	elements. I did that by inserting an element and printing out true
+	if it was succesful.
+	I then proceeded to check whether my expand function was correct by 
+        using a table of size two and then checking if all the elements were 
+        still there after expansion.
+	
+	I tested the parser by having it print out empty file paths similar
+	to the original tree traversal.
+	
+	I tested my main by giving it some test data to see if it correctly 
+        indexed the files and printed out correctly.
+        
+        I also tested main by giving it a file with words to search to see if 
+        the program would stop checking once it reached the end of the file.
+ 
