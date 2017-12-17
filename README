@@ -47,7 +47,7 @@ HOW TO COMPILE:
 	included Makefile compiles it.
 	
 ARCHITECTURAL OVERVIEW
- 	The program consists of two mai classes linked together by a main 
+ 	The program consists of two main classes linked together by a main 
  	file.
  	The main file takes in the user input and then initializes the parser
  	by passing in the user input into the parser's constructor.
